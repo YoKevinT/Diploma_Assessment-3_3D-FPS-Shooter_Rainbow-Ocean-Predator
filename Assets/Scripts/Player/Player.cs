@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public LayerMask groundLayer;
     public float groundRayDistance = 1.1f;
 
-
     private CharacterController controller;
     private Vector3 motion;
 

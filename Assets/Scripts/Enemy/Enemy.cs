@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
     private Slider healthSlider;
     private Renderer rend;
 
+    public static float scoreValue = 0f;
+    public Text score;
+
+    public GameObject fish;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +34,11 @@ public class Enemy : MonoBehaviour
         rend = GetComponent<Renderer>();
     }
 
+    void Update()
+    {
+        score.text = "Score: " + scoreValue;
+    }
+
     // When the GameObject gets Destroyed
     void OnDestroy()
     {
@@ -39,16 +49,8 @@ public class Enemy : MonoBehaviour
             Destroy(healthSlider.gameObject);
         }
     }
-
-    // Update is called once per frame
     void LateUpdate()
     {
-        // healthSlider.gameObject.SetActive(rend.isVisible);
-        // Vector3 screenPosition = Camera.main.WorldToScreenPoint(healthBarPoint.position);
-        // healthSlider.transform.position = screenPosition;
-
-        // OR
-
         // If the renderer (Enemy) is visible 
         if (rend.isVisible)
         {
@@ -77,6 +79,11 @@ public class Enemy : MonoBehaviour
         {
             // Destroy the GameObject
             Destroy(gameObject);
+
+            scoreValue += 1f;
+
+            GameObject clone = Instantiate(fish, new Vector3 (Random.Range(-6f, 5), 0f, Random.Range(-13f,-6f)), transform.rotation);
+            DontDestroyOnLoad(clone);
         }
     }
 }

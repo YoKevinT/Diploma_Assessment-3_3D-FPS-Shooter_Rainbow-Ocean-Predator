@@ -163,6 +163,8 @@ MonoBehaviour:
   healthBarUIPrefab: {fileID: 8770932128365226993, guid: 3752dc4515d0c81418fb04df76786911,
     type: 3}
   healthBarPoint: {fileID: 7225383287159253954}
+  score: {fileID: 0}
+  fish: {fileID: 6444980279925216384, guid: a889ff8fbba51b14cbbdd900687c958f, type: 3}
 --- !u!136 &8543787693442554700
 CapsuleCollider:
   m_ObjectHideFlags: 0

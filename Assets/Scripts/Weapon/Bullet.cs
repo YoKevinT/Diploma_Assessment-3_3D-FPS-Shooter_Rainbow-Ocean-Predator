@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     //public GameObject effectsPrefab;
     public Transform line;
 
+    public GameObject bulletPrefab;
+    public Transform shotOrigin;
     private Rigidbody rigid;
 
     void Awake()
@@ -33,6 +35,7 @@ public class Bullet : MonoBehaviour
         // Spawn the Effect (i.e, Bullet Hole / Sparks)
         //Instantiate(effectsPrefab, contact.point, Quaternion.LookRotation(contact.normal));
         Enemy enemy = col.collider.GetComponent<Enemy>();
+
         if (enemy)
         {
             enemy.TakeDamage(damage);

@@ -65,6 +65,8 @@ MonoBehaviour:
   damage: 10
   speed: 30
   line: {fileID: 5056615444734488213}
+  bulletPrefab: {fileID: 8570418281691210860}
+  shotOrigin: {fileID: 1769559023050666779}
 --- !u!65 &5955536757564436246
 BoxCollider:
   m_ObjectHideFlags: 0
