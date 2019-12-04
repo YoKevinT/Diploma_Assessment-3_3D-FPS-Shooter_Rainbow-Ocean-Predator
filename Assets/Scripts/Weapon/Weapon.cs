@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public int damage = 10, maxReserve = 500, maxClip = 30;
+    public int maxReserve = 500, maxClip = 30;
     public float spread = 2f, recoil = 1f, range = 10f, shootRate = .2f;
     public Transform shotOrigin;
     public GameObject bulletPrefab;
     public bool canShoot = false;
 
     private int currentReserve = 0, currentClip = 0;
-    private float shootTimer = 0f;
-    // Start is called before the first frame update
+    private float shootTimer = 0;
+
     void Start()
     {
         Reload();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Increase the shoot timer
         shootTimer += Time.deltaTime;
+
         // Check if shoot timer reaches the rate
         if (shootTimer >= shootRate)
         {
@@ -59,7 +59,7 @@ public class Weapon : MonoBehaviour
         // Reduce clip size
         currentClip--;
         // Reset shoot timer
-        shootTimer = 0f;
+        shootTimer = 0;
         // Reset canShoot
         canShoot = false;
         // Get origin + direction of fire
@@ -71,5 +71,29 @@ public class Weapon : MonoBehaviour
         GameObject clone = Instantiate(bulletPrefab, camTransform.position, camTransform.rotation);
         Bullet bullet = clone.GetComponent<Bullet>();
         bullet.Fire(lineOrigin, direction);
+
+        Invoke("ShootBackwards", 1f);
+    }
+
+    public void ShootBackwards()
+    {
+        // Get origin + direction of fire
+        Camera attachedCamera = Camera.main;
+        Transform camTransform = attachedCamera.transform;
+        Vector3 lineOrigin = shotOrigin.position;
+
+        Vector3 direction = camTransform.forward;
+        direction = new Vector3(0, 0, .2f);
+
+        //Vector3 rot = camTransform.rotation.eulerAngles;
+        //rot = new Vector3(rot.x + 180, rot.y, rot.z);
+
+        // Shoot bullet
+        GameObject clone = Instantiate(bulletPrefab, camTransform.position, camTransform.rotation);
+
+        //GameObject clone = Instantiate(bulletPrefab, camTransform.position, camTransform.rotation = Quaternion.Euler(rot));
+
+        Bullet bullet = clone.GetComponent<Bullet>();
+        bullet.Fire(lineOrigin, -direction);
     }
 }

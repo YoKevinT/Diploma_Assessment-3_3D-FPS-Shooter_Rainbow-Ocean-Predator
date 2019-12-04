@@ -501,7 +501,7 @@ MonoBehaviour:
   spread: 0
   recoil: 10
   range: 5
-  shootRate: 0.1
+  shootRate: 0.5
   shotOrigin: {fileID: 7196184144350685751}
   bulletPrefab: {fileID: 8570418281691210860, guid: 6b7fe71cb1e05bd4c81f096c14795b57,
     type: 3}
@@ -513,6 +513,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6396110577702818436}
     m_Modifications:
+    - target: {fileID: 9201813344293920000, guid: 6b7cc945aef151143a9a805c43eb15fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6447770167895097831, guid: 6b7cc945aef151143a9a805c43eb15fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -574,11 +579,6 @@ PrefabInstance:
       value: Pistol
       objectReference: {fileID: 0}
     - target: {fileID: 429260924415771777, guid: 6b7cc945aef151143a9a805c43eb15fe,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9201813344293920000, guid: 6b7cc945aef151143a9a805c43eb15fe,
         type: 3}
       propertyPath: m_Layer
       value: 10

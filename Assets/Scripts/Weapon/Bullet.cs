@@ -19,21 +19,12 @@ public class Bullet : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        if (rigid.velocity.magnitude > 0)
-        {
-            // Rotate the line to face direction of bullet travel
-            //line.transform.rotation = Quaternion.LookRotation(rigid.velocity);
-        } 
-    }
 
     void OnCollisionEnter(Collision col)
     {
         // Get contact point from collision
         ContactPoint contact = col.contacts[0];
-        // Spawn the Effect (i.e, Bullet Hole / Sparks)
-        //Instantiate(effectsPrefab, contact.point, Quaternion.LookRotation(contact.normal));
+
         Enemy enemy = col.collider.GetComponent<Enemy>();
 
         if (enemy)
